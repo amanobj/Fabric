@@ -1,0 +1,55 @@
+{
+  "successfulRegistration": {
+    "firstName": "Amanpreet",
+    "lastName": "Kaur",
+    "address": {
+      "street": "697",
+      "city": "Bentleigh",
+      "state": "VIC",
+      "zipCode": "3165"
+    },
+    "phoneNumber": "11111",
+    "ssn": "123-45-6789",
+    "username": "parabankAman",
+    "password": "AmanTester@12345"
+  },
+  "failedRegistration": {
+    "address": {
+      "street": "697",
+      "city": "Bentleigh",
+      "state": "VIC",
+      "zipCode": "3165"
+    },
+    "phoneNumber": "11111",
+    "ssn": "123-45-6789",
+    "username": "parabankAman",
+    "password": "AmanTester@12345"
+  },
+"loginSuccess": {
+  "username": "parabankAman",
+  "password": "AmanTester@12345",
+  "amount": 10000,
+  "recipientAccountId": "paraAman123",
+  "payeeAccountNumber": "paraAman12345678"
+},
+"loginFail": {
+  "username": "romu1212121",
+  "password": "romu343",
+  "amount": 10000,
+  "recipientAccountId": "1221",
+  "payeeAccountNumber": "paraAman12345678"
+},
+  "billPay": {
+    "payeeName": "Ben",
+    "payeeAddress": {
+      "street": "1",
+      "city": "c",
+      "state": "sydney",
+      "zipCode": "343"
+    },
+    "payeePhoneNumber": "343",
+    "payeeAccountNumber": "343",
+    "amount": "1.00"
+  }
+}
+  
