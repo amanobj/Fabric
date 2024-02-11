@@ -33,7 +33,6 @@ describe('Create Savings Account Test', () => {
         cy.get('#newAccountId').invoke('text').then((accountNumber) => {
             const accountNum = accountNumber.trim();
             cy.log(`New Savings Account Created. Account Number: ${accountNum}`);
-            // You can perform further assertions or actions with the account number here
         });
     });
 });
