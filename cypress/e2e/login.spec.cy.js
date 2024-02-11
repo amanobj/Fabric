@@ -32,7 +32,7 @@ describe('Create Savings Account Test', () => {
         // Capture the account number
         cy.get('#newAccountId').invoke('text').then((accountNumber) => {
             const accountNum = accountNumber.trim();
-            expect(accountNum).to.not.be.empty; // Assertion to check that the account number is not empty
+            expect(accountNum).to.not.be.empty; 
         });
     });
 });
