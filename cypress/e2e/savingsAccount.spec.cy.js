@@ -111,7 +111,7 @@ describe('Create Savings Account Test', () => {
                 // Validate details of the first transaction
                 const transaction = transactions[0];
                 expect(transaction.amount).to.eq(expectedAmount);
-              expect(transaction.type).to.eq('Credit');
+              expect(transaction.type).to.eq('Debit');
             });
         });
     });
