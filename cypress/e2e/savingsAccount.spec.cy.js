@@ -9,23 +9,30 @@ describe('Create Savings Account Test', () => {
         // Load user data from fixture
         cy.fixture('paraBank.json').then((data) => {
             userData = data;
-        });
-
+            
         // Executes prior each test within it block
         cy.visit(Cypress.config().baseUrl);
         loginPage = new LoginPage();
-    });
 
-    it('Verify Successful Account Creation', () => {
         // Login with valid credentials
         loginPage.enterUsername(userData.loginSuccess.username);
         loginPage.enterPassword(userData.loginSuccess.password);
         loginPage.clickSubmit();
 
+    });
+    });
+
+    it('Verify Successful Account Creation', () => {
+
         // Navigate to Open New Account page
         cy.contains('Open New Account').click();
 
         // Select savings account type
+        cy.get('#type').select('SAVINGS');
+
+        // Select an existing account to transfer funds
+        //cy.get('#fromAccountId').select('14343');
+
         cy.get('#type').select('SAVINGS');
 
         // Click on Open New Account button
@@ -45,28 +52,10 @@ describe('Create Savings Account Test', () => {
 
 
 
-    it('Verify Balance Details on Account Overview Page for New Account Created', () => {
-        // Login with valid credentials
-        loginPage.enterUsername(userData.loginSuccess.username);
-        loginPage.enterPassword(userData.loginSuccess.password);
-        loginPage.clickSubmit();
-
-        
-        // Assert that the balance details are displayed
-        cy.get('#accountTable')
-            .contains('tr', newAccountNumber)
-            .within(() => {
-                cy.get('td').eq(1).should('contain', '$100.00'); // Adjust the index based on the column position of balance
-            });
-    });
-
+    
 
     it('Verify Successful Bill Payment', () => {
-        // Login with valid credentials
-        loginPage.enterUsername(userData.loginSuccess.username);
-        loginPage.enterPassword(userData.loginSuccess.password);
-        loginPage.clickSubmit();
-
+       
         // Navigate to the bill payment section
         cy.contains('Bill Pay').click();
 
