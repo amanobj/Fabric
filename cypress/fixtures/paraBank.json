@@ -32,7 +32,7 @@
   "recipientAccountId": "paraAman123",
   "payeeAccountNumber": "paraAman12345678"
 },
-"loginFail": {
+"loginFailure": {
   "username": "romu1212121",
   "password": "romu343",
   "amount": 10000,
