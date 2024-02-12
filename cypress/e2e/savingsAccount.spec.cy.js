@@ -28,11 +28,6 @@ describe('Create Savings Account Test', () => {
         // Select savings account type
         cy.get('#type').select('SAVINGS');
 
-        // Select an existing account to transfer funds
-        cy.get('#fromAccountId').select('14343');
-
-        cy.get('#type').select('SAVINGS');
-
         // Click on Open New Account button
         cy.get('[value="Open New Account"][type="submit"]').click()
 
