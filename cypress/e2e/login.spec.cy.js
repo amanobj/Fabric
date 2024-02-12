@@ -18,7 +18,7 @@ describe('Verify Login', () => {
             loginPage.clickSubmit();
 
             // Assert that login is successful
-            cy.url().should('include', '/overview.htm'); // Assuming successful login redirects to '/home'
+            cy.url().should('include', '/overview.htm');
             // Add more assertions if needed
         });
     });
@@ -32,7 +32,7 @@ describe('Verify Login', () => {
             loginPage.clickSubmit();
 
             // Assert that login fails
-            cy.url().should('not.include', '/home'); // Assuming failed login doesn't redirect to '/home'
+            cy.url().should('not.include', '/home');
             // Add more assertions if needed
         });
     });
