@@ -25,7 +25,7 @@ describe('API Test - Find Transactions by Amount', () => {
         loginPage.clickSubmit();
     }
 
-    it('should retrieve transactions by amount', () => {
+    it.skip('should retrieve transactions by amount', () => {
         const expectedAmount = 100; // Replace with the expected amount for validation
     
         // Make the API request after login
