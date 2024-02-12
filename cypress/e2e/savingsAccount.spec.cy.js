@@ -38,6 +38,7 @@ describe('Create Savings Account Test', () => {
         // Click on Open New Account button
         cy.get('[value="Open New Account"][type="submit"]').click()
 
+         cy.wait(1000)
         // account number
         cy.get('#newAccountId').invoke('text').then((accountNumber) => {
             // Get the text of the account number
