@@ -43,11 +43,21 @@ describe('Create Savings Account Test', () => {
             // Get the text of the account number
             const accountNum = accountNumber.trim();
             newAccountNumber = accountNum
-            // Assert that the account number is not null or empty
-            expect(accountNum, 'Account number should not be null or empty').to.not.be.null;
-            expect(accountNum, 'Account number should not be null or empty').to.not.be.empty;
+            
 
+            // Navigate to Transfer Funds page
+        cy.contains('Transfer Funds').click();
+
+        cy.wait(1000)
+
+        // Perform funds transfer from the newly created account to another account
+        cy.get('#fromAccountId').select(newAccountNumber); 
+        cy.get('#amount').type('100'); 
+        cy.contains('Transfer').click(); 
         });
+
+        
+
     });
 
 
@@ -67,7 +77,7 @@ describe('Create Savings Account Test', () => {
         cy.get('input[name="payee.address.zipCode"]').type(userData.billPay.payeeAddress.zipCode);
         cy.get('input[name="payee.phoneNumber"]').type(userData.billPay.payeePhoneNumber);
         cy.get('input[name="payee.accountNumber"]').type(userData.billPay.payeeAccountNumber);
-        cy.get('input[name="verifyAccount"]').type(userData.billPay.payeeAccountNumber); // Assuming verifyAccount is to confirm the account number
+        cy.get('input[name="verifyAccount"]').type(userData.billPay.payeeAccountNumber); 
         cy.get('input[name="amount"]').type(userData.billPay.amount);
         cy.get('select[name="fromAccountId"]').select(newAccountNumber);
 
@@ -79,6 +89,30 @@ describe('Create Savings Account Test', () => {
     });
 
 
+    it('Verify API call should retrieve transactions by amount', () => {
+        const expectedAmount = 1.00; 
     
+        // Make the API request after login
+        cy.fixture('paraBank.json').then(() => {
+            cy.request({
+                method: 'GET',
+                url: 'https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/'+newAccountNumber+'/transactions/amount/' + expectedAmount
+            }).then((response) => {
+                // Verify that the API call was successful
+                expect(response.status).to.eq(200);
+    
+                // Parse the JSON response
+                const transactions = response.body;
+    
+                // Ensure that at least one transaction is returned
+                expect(transactions).to.have.length.greaterThan(0);
+    
+                // Validate details of the first transaction
+                const transaction = transactions[0];
+                expect(transaction.amount).to.eq(expectedAmount);
+              expect(transaction.type).to.eq('Credit');
+            });
+        });
+    });
     
 });
